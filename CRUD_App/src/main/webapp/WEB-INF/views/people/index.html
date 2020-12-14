@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Index</title>
+    <style>
+        body
+        {
+            width: 200px; /* Ширина элемента в пикселах */
+            padding: 10px; /* Поля вокруг текста */
+            margin: auto; /* Выравниваем по центру */
+            background: #ffffff; /* Цвет фона */
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+<center>
+    <h4>HOME</h4>
+<div th:each="person : ${people}">
+    <a style="text-decoration: none; color: black;"
+            th:href="@{/people/{id}(id=${person.getId()})}"
+       th:text="${person.getName() + ', ' + person.getCar()  + ', ' + person.getAge() }">user</a>
+</div>
+
+<br/>
+<hr style="background-color: black;"/>
+<button>
+    <a style="text-decoration: none; color: black;"
+       href="/people/new">Add new person</a>
+</button>
+</center>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Show</title>
+    <style>
+        body
+        {
+            width: 200px; /* Ширина элемента в пикселах */
+            padding: 10px; /* Поля вокруг текста */
+            margin: auto; /* Выравниваем по центру */
+            background: #ffffff; /* Цвет фона */
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+<center>
+    <h4>PERSONAL INFORMATION</h4>
+</center>
+<p th:text="${'Id: ' + person.getId()}">VALUE</p>
+<p th:text="${'Name: ' + person.getName()}">VALUE</p>
+<p th:text="${'Email: ' + person.getEmail()}">VALUE</p>
+<p th:text="${'Car name: ' + person.getCar()}">VALUE</p>
+<p th:text="${'Car year: ' + person.getAge()}">VALUE</p>
+<p th:text="${'Car mileage: ' + person.getYear() + ' kilometers'}">VALUE</p>
+<hr style="background-color: black;"/>
+<button style="float: left">
+    <a style="text-decoration: none; color: black;" th:href="@{/people/{id}/edit(id=${person.getId()})}">Edit</a>
+</button>
+
+<form style="float: left" th:method="DELETE" th:action="@{/people/{id}(id=${person.getId()})}">
+    <input type="submit" value="Delete"/>
+</form>
+
+<button>
+    <a style="text-decoration: none; color: black;" href="http://localhost:8080/people/">Home</a>
+</button>
+
+</body>
+</html>

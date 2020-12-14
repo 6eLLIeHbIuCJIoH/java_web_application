@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Update person</title>
+    <style>
+        body
+        {
+            width: 200px; /* Ширина элемента в пикселах */
+            padding: 10px; /* Поля вокруг текста */
+            margin: auto; /* Выравниваем по центру */
+            background: #ffffff; /* Цвет фона */
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+<center>
+    <h4>EDIT</h4>
+</center>
+<form th:method="PATCH" th:action="@{/people/{id}(id=${person.getId()})}" th:object="${person}">
+    <label for="name">Enter name: </label>
+    <input type="text" th:field="*{name}" id="name"/>
+    <div style="color:red" th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name Error</div>
+    <br/>
+    <label for="email">Enter email: </label>
+    <input type="text" th:field="*{email}" id="email"/>
+    <div style="color:red" th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Email Error</div>
+    <br/>
+    <label for="car">Enter car name: </label>
+    <input type="text" th:field="*{car}" id="car"/>
+    <div style="color:#ff0000" th:if="${#fields.hasErrors('car')}" th:errors="*{car}">Car Error</div>
+    <br/>
+    <label for="age">Enter car year: </label>
+    <input type="text" th:field="*{age}" id="age"/>
+    <div style="color:red" th:if="${#fields.hasErrors('age')}" th:errors="*{age}">Age Error</div>
+    <br/>
+    <label for="year">Enter vehicle mileage (in kilometers): </label>
+    <input type="text" th:field="*{year}" id="year"/>
+    <div style="color:#ff0000" th:if="${#fields.hasErrors('year')}" th:errors="*{year}">Year Error</div>
+    <br/>
+    <hr style="background-color: black;"/>
+    <button>
+        <a style="text-decoration: none; color: black;" href="http://localhost:8080/people/">Home</a>
+    </button>
+    <input type="submit" value="Update!"/>
+
+</form>
+
+</body>
+</html>
